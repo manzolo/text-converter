@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        variant: [cpu, gpu]
+        variant: [cpu]
 
     steps:
     - name: Checkout code
