@@ -52,4 +52,21 @@ docker images text-converter
 
 The CI/CD workflow builds and tests the `text-converter:cpu` image automatically on push to main/develop branches.
 
-The workflow expects the image to be available after running `docker-compose -f docker-compose.yml build`.
+The workflow uses the default Docker driver (not Buildx) to ensure images are immediately available in the local Docker daemon after building.
+
+### Important Note About Docker Buildx
+
+If you're using Docker Buildx with the `docker-container` driver, images won't be automatically loaded. Use one of these solutions:
+
+```bash
+# Option 1: Load the image after build
+docker buildx build --load -t text-converter:cpu .
+
+# Option 2: Use docker-compose with default driver
+DOCKER_BUILDKIT=0 docker-compose build
+
+# Option 3: Configure buildx to use docker driver
+docker buildx use default
+```
+
+The GitHub Actions workflow avoids this issue by not using the `docker/setup-buildx-action`.

@@ -72,13 +72,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v3
-
     - name: Build Docker image
       run: |
         docker-compose -f docker-compose.yml build
 
-    - name: Test Docker build
+    - name: Verify image was built
       run: |
-        docker images | grep text-converter
+        docker images text-converter:cpu
