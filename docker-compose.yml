@@ -22,6 +22,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    image: text-converter:cpu
     container_name: text-converter-cpu
     ports:
       - "8000:8000"

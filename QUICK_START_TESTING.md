@@ -40,8 +40,7 @@ Testing DOCX conversion (without AI)...
 ✓ DOCX conversion (no AI)
 
 Testing PDF conversion (without AI)...
-  Note: PDF generation has known ReportLab layout issues - skipping
-○ PDF conversion (known issue - skipped)
+✓ PDF conversion (no AI)
 
 Testing Preview endpoint...
 ✓ Preview endpoint
@@ -58,8 +57,8 @@ Testing error handling...
 ========================================
            Test Summary
 ========================================
-Total Tests:  9
-Passed:       9
+Total Tests:  10
+Passed:       10
 Failed:       0
 
 ✓ All tests passed!
@@ -75,6 +74,7 @@ You'll see:
 - `output.md` - Converted markdown
 - `output.html` - Converted HTML
 - `output.docx` - Word document
+- `output.pdf` - PDF document
 - `output_ai.md` - AI-enhanced version
 - `preview.json` - Preview API response
 

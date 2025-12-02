@@ -32,6 +32,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.gpu
+    image: text-converter:gpu
     container_name: text-converter-gpu
     ports:
       - "8000:8000"

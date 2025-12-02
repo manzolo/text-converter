@@ -8,6 +8,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    image: text-converter:external
     container_name: text-converter-external
     ports:
       - "8000:8000"

@@ -25,7 +25,7 @@ The `test.sh` script performs comprehensive integration tests using curl:
 2. **Markdown Conversion** - Test text to markdown (without AI)
 3. **HTML Conversion** - Test text to HTML (without AI)
 4. **DOCX Conversion** - Test text to Word document (without AI)
-5. **PDF Conversion** - Test text to PDF (known ReportLab issues)
+5. **PDF Conversion** - Test text to PDF (using ReportLab Canvas)
 6. **Preview Endpoint** - Test preview functionality
 7. **API Documentation** - Check docs are accessible
 8. **AI Enhancement** - Test conversion with AI processing
@@ -117,13 +117,15 @@ else
 fi
 ```
 
-## Known Issues
+## PDF Generation
 
-### PDF Generation
+PDF conversion now works reliably using ReportLab's Canvas API with:
+- Automatic word wrapping
+- Support for headings (H1, H2, H3)
+- Automatic page breaks
+- Letter-sized pages (8.5" x 11")
 
-PDF conversion using ReportLab may fail on complex layouts. This is a known limitation and the test is configured to skip this case gracefully.
-
-**Workaround**: Use HTML output instead, which can be converted to PDF using browser print-to-PDF functionality.
+The implementation uses a simplified approach that avoids the layout issues previously encountered with ReportLab's platypus framework.
 
 ### AI Processing
 
