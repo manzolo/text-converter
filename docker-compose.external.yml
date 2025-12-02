@@ -1,0 +1,31 @@
+version: '3.8'
+
+# Use this compose file when connecting to an external Ollama instance
+# Usage: docker-compose -f docker-compose.external.yml up
+
+services:
+  text-converter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: text-converter-external
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app/backend
+      - ./frontend:/app/frontend
+      - ./temp:/app/temp
+    env_file:
+      - .env
+    environment:
+      - USE_GPU=false
+      - USE_EXTERNAL_OLLAMA=true
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
