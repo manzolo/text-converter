@@ -50,6 +50,7 @@ jobs:
         context: .
         file: ./Dockerfile
         push: false
+        load: true
         tags: text-converter:cpu
         cache-from: type=gha
         cache-to: type=gha,mode=max
@@ -61,6 +62,7 @@ jobs:
         context: .
         file: ./Dockerfile.gpu
         push: false
+        load: true
         tags: text-converter:gpu
         cache-from: type=gha
         cache-to: type=gha,mode=max
